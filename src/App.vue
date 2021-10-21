@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AccordionPage from './pages/AccordionPage.vue'
 import CarouselPage from './pages/CarouselPage.vue'
+import ModalPage from './pages/ModalPage.vue'
 </script>
 
 <template>
@@ -10,6 +11,9 @@ import CarouselPage from './pages/CarouselPage.vue'
     </div>
     <div>
       <CarouselPage />
+    </div>
+    <div>
+      <ModalPage />
     </div>
   </div>
 </template>
