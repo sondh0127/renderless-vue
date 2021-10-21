@@ -18,6 +18,11 @@ const closeModal = (response) => {
   }
 }
 
+defineExpose({
+  openModal,
+  closeModal,
+})
+
 /**
  * create Modal using new Vue instance
  */
