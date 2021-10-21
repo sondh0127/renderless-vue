@@ -8,9 +8,7 @@ const _isOpen = ref(false)
 const stop = biSyncRef(isOpen, _isOpen)
 
 const close = () => (_isOpen.value = false)
-const toggle = () => {
-  _isOpen.value = !_isOpen.value
-}
+const toggle = () => (_isOpen.value = !_isOpen.value)
 
 const { inject } = useAccordionContext()
 const context = inject()

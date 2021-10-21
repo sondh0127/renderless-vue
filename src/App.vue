@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import AccordionPage from './pages/AccordionPage.vue'
+import CarouselPage from './pages/CarouselPage.vue'
 </script>
 
 <template>
-  <AccordionPage />
+  <div class="flex flex-col space-y-10">
+    <div>
+      <AccordionPage />
+    </div>
+    <div>
+      <CarouselPage />
+    </div>
+  </div>
 </template>
 
 <style>
