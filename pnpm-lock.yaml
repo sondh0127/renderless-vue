@@ -4,6 +4,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.1.0
   '@typescript-eslint/parser': ^5.1.0
   '@vitejs/plugin-vue': ^1.9.3
+  '@vueuse/components': ^6.7.3
   '@vueuse/core': ^6.7.3
   eslint: ^8.0.1
   eslint-config-prettier: ^8.3.0
@@ -21,6 +22,7 @@ specifiers:
   windicss: ^3.1.9
 
 dependencies:
+  '@vueuse/components': 6.7.3_vue@3.2.20
   '@vueuse/core': 6.7.3_vue@3.2.20
   vue: 3.2.20
 
@@ -398,6 +400,17 @@ packages:
 
   /@vue/shared/3.2.20:
     resolution: {integrity: sha512-FbpX+hD5BvXCQerEYO7jtAGHlhAkhTQ4KIV73kmLWNlawWhTiVuQxizgVb0BOkX5oG9cIRZ42EG++d/k/Efp0w==}
+
+  /@vueuse/components/6.7.3_vue@3.2.20:
+    resolution: {integrity: sha512-pZmprJQVMazELQO12+LqDJqyhIti5n3ZYHbrE5BNQ1Jwwrf5XWUS+LohmLMwi2g6gLxA29UpOOkWLbULiFMIpg==}
+    dependencies:
+      '@vueuse/core': 6.7.3_vue@3.2.20
+      '@vueuse/shared': 6.7.3_vue@3.2.20
+      vue-demi: 0.11.4_vue@3.2.20
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@vueuse/core/6.7.3_vue@3.2.20:
     resolution: {integrity: sha512-Cqvk/e4DbdfZlUmVRcxr4rkK5CMn6KqN7TLx2L1++F9HrvlD/FIET3KQ/W7+wHowhdKEjdOUCFJtyU0k65xH2g==}

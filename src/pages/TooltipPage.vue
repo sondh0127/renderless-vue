@@ -1,37 +1,33 @@
-<!-- <script lang="ts">
-export default defineComponent({
-  directives: {
-    tooltip: VueTooltip,
-  },
-})
-</script> -->
 <script setup lang="ts">
 import { STooltip } from '../components/tooltip'
+
+const buttonRef = ref()
 </script>
 
 <template>
-  <!-- <button v-tooltip="{{text: 'Squirrel'}}">🐿️</button>
-  <button v-tooltip="{{text: 'Rabbit'}}">🐇</button>
-  <button v-tooltip="{{text: 'Hamster'}}">🐹</button> -->
+  <!-- <button v-tooltip="{ text: 'Squirrel' }">🐿️</button> -->
+  <!-- <button v-tooltip="{{text: 'Rabbit'}}">🐇</button> -->
+  <!-- <button v-tooltip="{{text: 'Hamster'}}">🐹</button> -->
 
-  <!-- <Tooltip let:options let:dimensions>
-    {#if options}
+  <!-- <Tooltip let:show let:dimensions>
+    {#if show}
     <div
       class="tooltip"
       style="left: {dimensions.x + (dimensions.width / 2)}px; top: calc({dimensions.y}px - 2.75rem - 5px);"
     >
-      <span>{options.text}</span>
+      <span>{show.text}</span>
     </div>
     {/if}
   </Tooltip> -->
 
-  <STooltip>
-    <template #trigger="{ options }">
-      {{ options }}
-      <button>Button</button>
+  <STooltip :node="buttonRef">
+    <template #default="{ show, dimensions }">
+      <div v-if="show" class="tooltip">
+        <!-- <span>{{ show.text }}</span> -->
+        <span>Content</span>
+        <span>{{ JSON.stringify(dimensions) }}</span>
+      </div>
     </template>
-
-    <!-- <template #trigger>
-    </template> -->
   </STooltip>
+  <button ref="buttonRef" class="bg-gray-200 h-[200px] w-[100px]">Button</button>
 </template>

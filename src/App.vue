@@ -4,6 +4,7 @@ import CarouselPage from './pages/CarouselPage.vue'
 import ModalPage from './pages/ModalPage.vue'
 import TabPage from './pages/TabPage.vue'
 import TooltipPage from './pages/TooltipPage.vue'
+import SwitchPage from './pages/SwitchPage.vue'
 </script>
 
 <template>
@@ -22,6 +23,9 @@ import TooltipPage from './pages/TooltipPage.vue'
     </div>
     <div>
       <TooltipPage />
+    </div>
+    <div>
+      <SwitchPage />
     </div>
   </div>
 </template>

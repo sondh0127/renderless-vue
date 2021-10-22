@@ -1,0 +1,5 @@
+export { useLabels } from './label'
+export { Description as SwitchDescription, useDescriptions } from './description'
+export { default as Switch } from './Switch.vue'
+export { default as Label } from './Label.vue'
+export { default as SwitchGroup } from './SwitchGroup.vue'
