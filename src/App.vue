@@ -3,6 +3,7 @@ import AccordionPage from './pages/AccordionPage.vue'
 import CarouselPage from './pages/CarouselPage.vue'
 import ModalPage from './pages/ModalPage.vue'
 import TabPage from './pages/TabPage.vue'
+import TooltipPage from './pages/TooltipPage.vue'
 </script>
 
 <template>
@@ -18,6 +19,9 @@ import TabPage from './pages/TabPage.vue'
     </div>
     <div>
       <TabPage />
+    </div>
+    <div>
+      <TooltipPage />
     </div>
   </div>
 </template>
