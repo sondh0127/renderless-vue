@@ -16,6 +16,6 @@ export const useAccordionContext = () => {
           current.value = fn
         },
       }),
-    inject: () => inject(accordionKey),
+    inject: () => inject(accordionKey)!,
   }
 }
