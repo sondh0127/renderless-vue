@@ -1,2 +1,5 @@
 export { default as Popover } from './Popover.vue'
 export { default as PopoverButton } from './PopoverButton.vue'
+export { default as PopoverOverlay } from './PopoverOverlay.vue'
+export { default as PopoverPanel } from './PopoverPanel.vue'
+export { default as PopoverGroup } from './PopoverGroup.vue'

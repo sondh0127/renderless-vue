@@ -1,6 +1,11 @@
 <script lang="ts" setup>
-import { PopoverPanel, PopoverGroup, PopoverOverlay } from '../components/popover/popover'
-import { Popover, PopoverButton } from '../components/popover'
+import {
+  Popover,
+  PopoverButton,
+  PopoverOverlay,
+  PopoverPanel,
+  PopoverGroup,
+} from '../components/popover'
 
 const solutions = ref([
   {
@@ -223,6 +228,7 @@ const solutions = ref([
             </div>
           </PopoverPanel>
         </transition>
+        <PopoverOverlay class="bg-black" :class="open ? 'opacity-30 fixed inset-0' : 'opacity-0'" />
       </Popover>
       <Popover v-slot="{ open }" class="relative">
         <PopoverButton
