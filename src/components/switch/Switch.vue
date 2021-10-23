@@ -49,6 +49,5 @@ function handleKeyPress(event: KeyboardEvent) {
     @keypress="handleKeyPress"
   >
     <slot :checked="$props.modelValue"></slot>
-    {{ labelledby }}
   </button>
 </template>

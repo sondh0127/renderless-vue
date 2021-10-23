@@ -5,6 +5,7 @@ import ModalPage from './pages/ModalPage.vue'
 import TabPage from './pages/TabPage.vue'
 import TooltipPage from './pages/TooltipPage.vue'
 import SwitchPage from './pages/SwitchPage.vue'
+import PopoverPage from './pages/PopoverPage.vue'
 </script>
 
 <template>
@@ -26,6 +27,9 @@ import SwitchPage from './pages/SwitchPage.vue'
     </div>
     <div>
       <SwitchPage />
+    </div>
+    <div>
+      <PopoverPage />
     </div>
   </div>
 </template>
