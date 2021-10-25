@@ -99,7 +99,7 @@ const solutions = ref([
 
 <template>
   <div class="max-w-sm w-full px-4 top-16 left-1/2 fixed">
-    <PopoverGroup class="flex">
+    <PopoverGroup class="flex space-x-2">
       <Popover v-slot="{ open }" class="relative">
         <PopoverButton
           :class="open ? '' : 'text-opacity-90'"

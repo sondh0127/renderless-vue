@@ -1,95 +1,55 @@
-<script lang="ts">
-import {
-  defineComponent,
-  inject,
-  onUnmounted,
-  provide,
-  ref,
-  watchEffect,
-
-  // Types
-  InjectionKey,
-  Ref,
-  computed,
-} from 'vue'
-
-import { render, Features } from '../../utils/render'
-import { useId } from '../../hooks/use-id'
-import { Keys } from '../../utils/keyboard'
-import {
-  getFocusableElements,
-  Focus,
-  focusIn,
-  FocusResult,
-  isFocusableElement,
-  FocusableMode,
-} from '../../utils/focus-management'
+<script lang="ts" setup>
 import { dom } from '../../utils/dom'
-import { useWindowEvent } from '../../hooks/use-window-event'
-import { useOpenClosedProvider, State, useOpenClosed } from '../../internal/open-closed'
-import { useResolveButtonType } from '../switch/use-resolve-button-type'
 import { PopoverGroupContext, PopoverRegisterBag } from './popover'
 
-export default defineComponent({
-  name: 'PopoverGroup',
-  props: {
-    as: { type: [Object, String], default: 'div' },
-  },
-  setup() {
-    const groupRef = ref<HTMLElement | null>(null)
-    const popovers = ref<PopoverRegisterBag[]>([])
+defineProps({
+  as: { type: [Object, String], default: 'div' },
+})
 
-    function unregisterPopover(registerBag: PopoverRegisterBag) {
-      const idx = popovers.value.indexOf(registerBag)
-      if (idx !== -1) popovers.value.splice(idx, 1)
-    }
+const groupRef = ref<HTMLElement | null>(null)
+const popovers = ref<PopoverRegisterBag[]>([])
 
-    function registerPopover(registerBag: PopoverRegisterBag) {
-      popovers.value.push(registerBag)
-      return () => {
-        unregisterPopover(registerBag)
-      }
-    }
+function unregisterPopover(registerBag: PopoverRegisterBag) {
+  const idx = popovers.value.indexOf(registerBag)
+  if (idx !== -1) popovers.value.splice(idx, 1)
+}
 
-    function isFocusWithinPopoverGroup() {
-      const element = document.activeElement as HTMLElement
+function registerPopover(registerBag: PopoverRegisterBag) {
+  popovers.value.push(registerBag)
+  return () => {
+    unregisterPopover(registerBag)
+  }
+}
 
-      if (dom(groupRef)?.contains(element)) return true
+function isFocusWithinPopoverGroup() {
+  const element = document.activeElement as HTMLElement
 
-      // Check if the focus is in one of the button or panel elements. This is important in case you are rendering inside a Portal.
-      return popovers.value.some((bag) => {
-        return (
-          document.getElementById(bag.buttonId)?.contains(element) ||
-          document.getElementById(bag.panelId)?.contains(element)
-        )
-      })
-    }
+  if (dom(groupRef)?.contains(element)) return true
 
-    function closeOthers(buttonId: string) {
-      for (const popover of popovers.value) {
-        if (popover.buttonId !== buttonId) popover.close()
-      }
-    }
+  // Check if the focus is in one of the button or panel elements. This is important in case you are rendering inside a Portal.
+  return popovers.value.some((bag) => {
+    return (
+      document.getElementById(bag.buttonId)?.contains(element) ||
+      document.getElementById(bag.panelId)?.contains(element)
+    )
+  })
+}
 
-    provide(PopoverGroupContext, {
-      registerPopover,
-      unregisterPopover,
-      isFocusWithinPopoverGroup,
-      closeOthers,
-    })
+function closeOthers(buttonId: string) {
+  for (const popover of popovers.value) {
+    if (popover.buttonId !== buttonId) popover.close()
+  }
+}
 
-    return { el: groupRef }
-  },
-  render() {
-    const propsWeControl = { ref: 'el' }
-
-    return render({
-      props: { ...this.$props, ...propsWeControl },
-      slot: {},
-      attrs: this.$attrs,
-      slots: this.$slots,
-      name: 'PopoverGroup',
-    })
-  },
+provide(PopoverGroupContext, {
+  registerPopover,
+  unregisterPopover,
+  isFocusWithinPopoverGroup,
+  closeOthers,
 })
 </script>
+<template>
+  <div ref="groupRef" v-bind="$props">
+    <slot></slot>
+  </div>
+</template>
